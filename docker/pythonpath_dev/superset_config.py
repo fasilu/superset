@@ -99,7 +99,8 @@ class CeleryConfig:
 
 CELERY_CONFIG = CeleryConfig
 
-FEATURE_FLAGS = {"ALERT_REPORTS": True}
+FEATURE_FLAGS = {"ALERT_REPORTS": True, "EMBEDDED_SUPERSET": True,
+                 "EMBEDDABLE_CHARTS": True, "ENABLE_TEMPLATE_PROCESSING": True, "FAB_API_SWAGGER_UI": True}
 ALERT_REPORTS_NOTIFICATION_DRY_RUN = True
 WEBDRIVER_BASEURL = "http://superset:8088/"
 # The base URL for the email report hyperlinks.
@@ -107,6 +108,58 @@ WEBDRIVER_BASEURL_USER_FRIENDLY = WEBDRIVER_BASEURL
 
 SQLLAB_CTAS_NO_LIMIT = True
 
+PUBLIC_ROLE_LIKE = "Gamma"
+ENABLE_PROXY_FIX = True
+HTTP_HEADERS = {}
+# HTTP_HEADERS = {'X-Frame-Options': 'ALLOWALL'}
+
+# X_FRAME_OPTIONS = 'ALLOW-FROM http://localhost:3000'
+# ENABLE_CORS = True
+
+# CORS_OPTIONS = {
+#     'supports_credentials': True,
+#     'allow_headers': ['*'],
+#     'resources': ['*'],
+#     'origins': ['*']
+# }
+WTF_CSRF_ENABLED = False
+SESSION_COOKIE_SAMESITE = None
+ENABLE_CORS = True
+CORS_OPTIONS = {
+    "send_wildcard": True,
+    "allow_headers": ["*"],
+    "resources": ["*"],
+    "origins": ["*"]
+}
+
+# talisman_config
+TALISMAN_ENABLED = True
+TALISMAN_CONFIG = {
+    "content_security_policy": "frame-ancestors http://localhost:8088/ http://localhost:3000 http://127.0.0.1:8000/ https://*",
+    "force_https": False,
+    "force_https_permanent": False,
+    "frame_options": "ALLOWFROM",
+    "frame_options_allow_from": "*"
+}
+# TALISMAN_ENABLED = False
+
+# CONTENT_SECURITY_POLICY = "frame-ancestors 'self' http://localhost:3000"
+
+# CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost:9000/',
+#     'http://localhost:3000/',
+#     'http://localhost:8088/'
+
+# ]
+
+# SUPERSET_WEBSERVER_DOMAINS = [
+#     'http://localhost:9000/',
+#     'http://localhost:3000/',
+#     'http://localhost:8088/',
+# ]
+# GUEST_ROLE_NAME: "Public"
+# GUEST_TOKEN_JWT_EXP_SECONDS: 300  # 5 minutes, or you could set it longer
 #
 # Optionally import superset_config_docker.py (which will have been included on
 # the PYTHONPATH) in order to allow for local settings to be overridden
